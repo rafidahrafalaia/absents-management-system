@@ -20,7 +20,6 @@ function App() {
                   }>
                   <Route path='' element={<Home />}></Route>
                   <Route path='/profile' element={<EditEmployee />}></Route>
-                  {/* <Route path='/employeeedit' element={<EditEmployee />}></Route> */}
               </Route>
             </Routes>
         </BrowserRouter>

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from 'react-router-dom'; 
 import api from '../api/api.js';
 import { fetchToken } from './Auth.js';
-// import './styles.css'; // Import your custom styles
 
 function Home() {
     const [data, setData] = useState([]);
     const [message, setMessage] = useState();
 
-    // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage] = useState(5);
     const [itemsLength, setItemsLength] = useState(itemsPerPage);
@@ -19,10 +17,9 @@ function Home() {
         'Authorization': auth
     };
 
-    const navigate = useNavigate(); // Initialize useNavigate hook
+    const navigate = useNavigate(); 
 
     const handleEdit = (id) => {
-        // Redirect to the edit page with the user ID as a parameter
         navigate(`/edit/${id}`);
     };
 
@@ -55,7 +52,7 @@ function Home() {
                             <th>E-mail</th>
                             <th>Office Number</th>
                             <th>Phone Number</th>
-                            <th>Actions</th> {/* Add "Actions" column header */}
+                            <th>Actions</th> 
                         </tr>
                     </thead>
                     <tbody>
@@ -66,11 +63,10 @@ function Home() {
                                 <td>{user.email}</td>
                                 <td>{user.office_number}</td>
                                 <td>{user.personal_number}</td>
-                                {/* Add an "Edit" button to each row */}
                                 <td>
                                     <button
-                                        onClick={() => handleEdit(user.id)} // Handle edit on button click
-                                        className="edit-button" // Add class for styling
+                                        onClick={() => handleEdit(user.id)} 
+                                        className="edit-button" 
                                     >
                                         Edit
                                     </button>
@@ -88,7 +84,6 @@ function Home() {
                 >
                     Previous
                 </button>
-                {/* Create buttons for each page number */}
                 {Array.from({ length: Math.ceil(itemsLength / itemsPerPage) }).map((_, index) => (
                     <button
                         key={index}

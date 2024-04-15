@@ -8,7 +8,6 @@ const moment = require('moment');
 const Producer  = require('./rabbitmq');
 
 async function upload(req, res) {
-  console.log(req.file,'kdjaksjd')
   if (!req.file) {
       return res.status(400).send('No file uploaded.');
   }
@@ -21,7 +20,7 @@ async function upload(req, res) {
         id: req.user.id 
     } 
   });
-  // Respond with a success message and the file's path
+  
   res.json({
       message: 'File uploaded successfully.',
       fileUrl: `/uploads/${req.file.filename}`
@@ -80,7 +79,7 @@ async function updateUser(req, res, next) {
           if (error) {
             res.status(500).json({ message: error })  
           }
-          console.log(hash,"ksdjakld")
+          
           update = {
             ...update,
             password: hash,
@@ -111,7 +110,6 @@ async function updateUser(req, res, next) {
       const dataString = JSON.stringify(user);
       const producer =  new Producer();
       producer.publishMessage('updateUser', dataString);
-      // console.log(rabbit,'askdakjkajd')
       res.status(200).json({ message: "successfully update employee", data: user })  
     }
   }catch (error) {
@@ -130,7 +128,6 @@ async function clockin(req, res, next) {
         userId: req.user.id
       }
     });
-    console.log(findOne,'askdlak')
     if (findOne) res.status(200).json({message:"user already clock-in for today"});
     else {
       const insert = {

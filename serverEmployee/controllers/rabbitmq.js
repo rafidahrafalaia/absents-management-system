@@ -1,5 +1,4 @@
 const amqp = require("amqplib");
-// const config = require("./config");
 
 const rabbitMQURL = 'amqp://guest:guest@localhost:5672';
 class Producer {
@@ -15,7 +14,6 @@ class Producer {
       await this.createChannel();
     }
 
-    // const exchangeName = config.rabbitMQ.exchangeName;
     await this.channel.assertExchange(exchangeName, "direct");
 
     const logDetails = {

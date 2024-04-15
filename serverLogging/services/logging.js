@@ -18,7 +18,7 @@ async function queueNotif(body) {
             send_notif: true
         }
     });
-    console.log(devices.length,'kasjka')
+    
     if (devices.length) {
         devices.map(device =>{
           const bodyRequest = {

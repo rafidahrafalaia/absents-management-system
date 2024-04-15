@@ -1,14 +1,7 @@
 import React, {  } from 'react'
-import {fetchToken} from './Auth.js';
 import { Link, Outlet, useNavigate } from 'react-router-dom'
  
 function Dashboard() {
- 
-    let auth = fetchToken();
-    const headers = {
-        'Content-Type': 'application/json', 
-        'Authorization': auth
-    };
     const navigate = useNavigate();
     const signOut = () => {
         localStorage.removeItem('Token')
@@ -33,11 +26,6 @@ function Dashboard() {
                                     <span className="ms-1 d-none d-sm-inline">Profile</span>
                                 </Link>
                             </li>
-                            {/* <li>
-                                <Link to="/employee" className="nav-link px-0 align-middle text-white">
-                                    <span className="ms-1 d-none d-sm-inline">Manage Employees</span> 
-                                </Link>
-                            </li> */}
                             <li>
                                 <button type = 'button' className="btn btn-success" onClick= {signOut}>Sign Out</button>
                             </li>
