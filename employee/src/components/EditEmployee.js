@@ -41,6 +41,7 @@ function EditEmployee() {
     }, []);
 
     const handleChange = (e) => {
+        e.preventDefault();
         const { name, value, files } = e.target;
         if (name === 'avatar') {
             setFormData((prevFormData) => ({
